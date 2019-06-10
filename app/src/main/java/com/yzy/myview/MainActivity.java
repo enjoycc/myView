@@ -1,11 +1,9 @@
 package com.yzy.myview;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,12 +19,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("A");
             }
         });
-        findViewById(R.id.myview).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,SccondActivity.class));
-            }
-        });
+
        new Handler().post(new Runnable() {
             @Override
             public void run() {
