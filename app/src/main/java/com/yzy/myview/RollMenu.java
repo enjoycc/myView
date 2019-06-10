@@ -100,11 +100,11 @@ public class RollMenu extends ViewGroup implements View.OnClickListener,OnFocusC
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int count = getChildCount();
+
         for (int i = 0; i < count; i++)
         {
             // mesure child
-            getChildAt(i).measure(MeasureSpec.UNSPECIFIED,
-                    MeasureSpec.UNSPECIFIED);
+            measureChild(getChildAt(i),widthMeasureSpec,heightMeasureSpec);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 

@@ -9,25 +9,35 @@
         android:id="@+id/myview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/red_circle"
+        android:scaleType="fitCenter"
+        android:padding="10dp"/>
+
     <com.yzy.myview.RollMenu
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/red_circle"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/red_circle"
+            android:scaleType="fitCenter"
             android:padding="10dp"/>
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:padding="10dp"
-            android:background="@drawable/red_circle"/>
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/red_circle"
+            android:scaleType="fitCenter"
+            android:padding="10dp"/>
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:padding="10dp"
-            android:background="@drawable/red_circle"/>
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/red_circle"
+            android:scaleType="fitCenter"
+            android:padding="10dp"/>
     </com.yzy.myview.RollMenu>
 
 </RelativeLayout>
