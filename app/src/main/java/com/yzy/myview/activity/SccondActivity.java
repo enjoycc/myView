@@ -1,9 +1,10 @@
-package com.yzy.myview;
+package com.yzy.myview.activity;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.yzy.myview.R;
 
 public class SccondActivity extends Activity {
     String TAG=SccondActivity.class.getSimpleName();

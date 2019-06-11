@@ -1,4 +1,4 @@
-package com.yzy.myview;
+package com.yzy.myview.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

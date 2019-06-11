@@ -1,10 +1,11 @@
-package com.yzy.myview;
+package com.yzy.myview.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
@@ -20,7 +21,7 @@ public class RollMenu extends ViewGroup implements View.OnClickListener,OnFocusC
     /**
      * 动画持续时间
      */
-    private long rollDuration=300;
+    private long rollDuration=600;
     /**
      * 菜单为open状态时，主按钮的缩放比例
      */
@@ -179,6 +180,7 @@ public class RollMenu extends ViewGroup implements View.OnClickListener,OnFocusC
             AnimationSet childAnimation=new AnimationSet(true);
             childAnimation.addAnimation(rotateAnimation(0,360));
             childAnimation.addAnimation(translateAnimation(0, 0, bottom, 0));
+            childAnimation.addAnimation(alphaAnimation(0, 1));
             childAnimation.setFillAfter(true);
             child.startAnimation(childAnimation);
             child.setVisibility(VISIBLE);
@@ -205,6 +207,7 @@ public class RollMenu extends ViewGroup implements View.OnClickListener,OnFocusC
             AnimationSet childAnimation=new AnimationSet(true);
             childAnimation.addAnimation(rotateAnimation(0f, -360f));
             childAnimation.addAnimation(translateAnimation(0, 0, 0, bottom));
+            childAnimation.addAnimation(alphaAnimation(1, 0));
             childAnimation.setFillAfter(true);
             child.startAnimation(childAnimation);
             child.postDelayed(new Runnable() {
@@ -248,6 +251,13 @@ public class RollMenu extends ViewGroup implements View.OnClickListener,OnFocusC
         translateAnimation.setDuration(rollDuration);
         translateAnimation.setFillAfter(true);
         return translateAnimation;
+    }
+
+    private Animation alphaAnimation(float fromAlpha, float toAlpha){
+        AlphaAnimation alphaAnimation=new AlphaAnimation(fromAlpha,toAlpha);
+        alphaAnimation.setDuration(rollDuration);
+        alphaAnimation.setFillAfter(true);
+        return alphaAnimation;
     }
 
 

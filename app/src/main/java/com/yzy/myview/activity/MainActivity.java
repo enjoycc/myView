@@ -1,19 +1,24 @@
-package com.yzy.myview;
+package com.yzy.myview.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.yzy.myview.R;
+import com.yzy.myview.view.RollMenu;
+
 public class MainActivity extends AppCompatActivity {
 
     String TAG=MainActivity.class.getSimpleName();
+    private RollMenu rollMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.myview).post(new Runnable() {
+        rollMenu=findViewById(R.id.roll_menue);
+        rollMenu.post(new Runnable() {
             @Override
             public void run() {
                 System.out.println("A");
