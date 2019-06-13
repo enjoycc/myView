@@ -1,42 +1,36 @@
 package com.yzy.myview.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.FrameLayout;
 
 import com.yzy.myview.R;
 import com.yzy.myview.view.RollMenu;
 
 public class MainActivity extends AppCompatActivity {
 
-    String TAG=MainActivity.class.getSimpleName();
+    private static String TAG=MainActivity.class.getSimpleName();
     private RollMenu rollMenu;
+    private FrameLayout topFrameLayout,bottomFrameLayout;
+    BlankFragment topFragment, bottomFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rollMenu=findViewById(R.id.roll_menue);
-        rollMenu.post(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("A");
-            }
-        });
-
-       new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("B");
-            }
-        });
-       runOnUiThread(new Runnable() {
-           @Override
-           public void run() {
-               System.out.println("D");
-           }
-       });
+        topFrameLayout=findViewById(R.id.top_frame);
+        bottomFrameLayout=findViewById(R.id.bottom_frame);
+        if(null==savedInstanceState){
+             topFragment=new BlankFragment("topFragment","");
+             bottomFragment=BlankFragment.newInstance("bottomFragment","");
+            showFragment(topFrameLayout.getId(),topFragment);
+            showFragment(bottomFrameLayout.getId(),bottomFragment);
+        }
 
         Log.d(TAG,"onCreate");
 
@@ -45,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("C");
         Log.d(TAG,"onResume");
 
     }
@@ -73,5 +66,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG,"onDestroy");
+    }
+
+    private void showFragment(int id,Fragment fragment){
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.add(id,fragment);
+        fragmentTransaction.commit();
+
     }
 }

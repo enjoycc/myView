@@ -228,7 +228,8 @@ public class RollMenu extends ViewGroup implements View.OnClickListener,OnFocusC
         void onclick(View view,int position);
     }
 
-    private  Animation rotateAnimation(float fromDegrees, float toDegrees){
+
+    private  Animation rotateAnimation(float fromDegrees, float toDegrees){//旋转动画
         RotateAnimation rotate = new RotateAnimation(fromDegrees, toDegrees,
                 Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
@@ -238,7 +239,7 @@ public class RollMenu extends ViewGroup implements View.OnClickListener,OnFocusC
     }
 
     private Animation scaleAnimation(float fromX, float toX, float fromY, float toY,
-                                     int pivotXType, float pivotXValue, int pivotYType, float pivotYValue){
+                                     int pivotXType, float pivotXValue, int pivotYType, float pivotYValue){//放大缩小动画
         ScaleAnimation scale = new ScaleAnimation(fromX, toX, fromY, toY,
                 pivotXType, pivotXValue, pivotYType,pivotYValue);
         scale.setDuration(rollDuration);
@@ -246,14 +247,14 @@ public class RollMenu extends ViewGroup implements View.OnClickListener,OnFocusC
         return scale;
     }
 
-    private Animation translateAnimation(float fromXDelta, float toXDelta, float fromYDelta, float toYDelta){
+    private Animation translateAnimation(float fromXDelta, float toXDelta, float fromYDelta, float toYDelta){//平移动画
         TranslateAnimation translateAnimation=new TranslateAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta);
         translateAnimation.setDuration(rollDuration);
         translateAnimation.setFillAfter(true);
         return translateAnimation;
     }
 
-    private Animation alphaAnimation(float fromAlpha, float toAlpha){
+    private Animation alphaAnimation(float fromAlpha, float toAlpha){//透明度动画
         AlphaAnimation alphaAnimation=new AlphaAnimation(fromAlpha,toAlpha);
         alphaAnimation.setDuration(rollDuration);
         alphaAnimation.setFillAfter(true);
